@@ -1,9 +1,11 @@
 class ThanksMailer < ApplicationMailer
-  default form: "jindeensadayoshi@gmail.com"
+  default form: ENV['THANKS_MAILER_ADDRESS']
 
-  def thanks_mail
-    @user=params[:user]
-    mail(to: @user.email, subject: "Welcome!")
+
+  def thanks_mail(email, name)
+    @name=name
+    @greeting="hi"
+    mail(to: email, subject: "Welcome!")
   end
 
 end
